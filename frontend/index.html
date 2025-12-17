@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détection de Rétinopathie Diabétique - Spark MLlib</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+                            fill="currentColor" />
+                        <circle cx="12" cy="12" r="3" fill="currentColor" />
+                    </svg>
+                    <h1>Détection de Rétinopathie Diabétique</h1>
+                </div>
+                <p class="subtitle">Analyse avec Apache Spark MLlib & Machine Learning</p>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="prediction">
+                <span class="tab-icon">🔍</span>
+                Prédiction
+            </button>
+            <button class="tab-btn" data-tab="results">
+                <span class="tab-icon">📊</span>
+                Résultats
+            </button>
+            <button class="tab-btn" data-tab="comparison">
+                <span class="tab-icon">⚖️</span>
+                Comparaison
+            </button>
+        </nav>
+
+        <!-- Content Sections -->
+        <main class="content">
+            <!-- Prediction Tab -->
+            <section id="prediction" class="tab-content active">
+                <div class="card">
+                    <h2 class="card-title">Faire une Prédiction</h2>
+
+                    <div class="form-group">
+                        <label for="model-select" class="form-label">Sélectionner un Modèle</label>
+                        <select id="model-select" class="form-select">
+                            <option value="">Chargement des modèles...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Télécharger une Image de Rétine</label>
+                        <div class="upload-container">
+                            <input type="file" id="image-input" accept="image/*" style="display: none;">
+                            <button id="upload-btn" class="btn-upload">
+                                <span class="upload-icon">📁</span>
+                                <span class="upload-text">Choisir une image</span>
+                            </button>
+                            <div id="image-preview" style="display: none;">
+                                <img id="preview-img"
+                                    style="max-width: 100%; max-height: 300px; border-radius: 10px; margin-top: 15px;">
+                                <p id="image-name" style="margin-top: 10px; color: var(--text-secondary);"></p>
+                            </div>
+                        </div>
+                        <small class="form-hint">Formats acceptés: JPG, PNG (images du dataset MESSIDOR)</small>
+                    </div>
+
+                    <button id="predict-btn" class="btn btn-primary" disabled>
+                        <span class="btn-text">Analyser</span>
+                        <span class="btn-loader" style="display: none;">⏳</span>
+                    </button>
+
+                    <div id="prediction-result" class="result-card" style="display: none;">
+                        <div class="result-header">
+                            <h3 class="result-title">Résultat de l'Analyse</h3>
+                            <span class="result-badge" id="result-badge"></span>
+                        </div>
+
+                        <div class="result-body">
+                            <div class="result-item">
+                                <span class="result-label">Résultat:</span>
+                                <span class="result-value" id="test-result"></span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Modèle utilisé:</span>
+                                <span class="result-value" id="model-used"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Tab -->
+            <section id="results" class="tab-content">
+                <div class="card">
+                    <h2 class="card-title">Résultats des Modèles</h2>
+
+                    <div class="results-grid">
+                        <div class="result-section">
+                            <h3 class="section-title">Spark MLlib</h3>
+                            <div id="spark-results" class="metrics-container">
+                                <div class="loading">Chargement des résultats...</div>
+                            </div>
+                        </div>
+
+                        <div class="result-section">
+                            <h3 class="section-title">scikit-learn</h3>
+                            <div id="sklearn-results" class="metrics-container">
+                                <div class="loading">Chargement des résultats...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Comparison Tab -->
+            <section id="comparison" class="tab-content">
+                <div class="card">
+                    <h2 class="card-title">Comparaison des Frameworks</h2>
+
+                    <div id="comparison-table" class="table-container">
+                        <div class="loading">Chargement de la comparaison...</div>
+                    </div>
+
+                    <div class="insights-section">
+                        <h3 class="section-title">Insights Clés</h3>
+                        <div id="insights" class="insights-grid"></div>
+                    </div>
+                </div>
+            </section>
+
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Projet de Détection de Rétinopathie Diabétique avec Apache Spark MLlib</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

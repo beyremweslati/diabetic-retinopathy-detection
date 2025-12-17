@@ -1,0 +1,28 @@
+FROM python:3.9-slim
+
+RUN apt-get update && apt-get install -y \
+    gcc \
+    default-jre-headless \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV JAVA_HOME=/usr/lib/jvm/default-java
+ENV PATH="${JAVA_HOME}/bin:${PATH}"
+
+RUN pip install --no-cache-dir \
+    flask \
+    flask-cors \
+    numpy \
+    pandas \
+    scikit-learn \
+    pyspark==3.5.0 \
+    Pillow \
+    opencv-python-headless \
+    scipy \
+    scikit-image \
+    joblib
+
+WORKDIR /home
+
+EXPOSE 5000
+
+CMD ["python", "api/app.py"]
