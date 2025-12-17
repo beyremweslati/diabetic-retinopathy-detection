@@ -34,6 +34,7 @@ dataset2/processed/
 # Models
 models/*.pkl
 models/spark_*
+!models/spark_results.csv
 models/feature_scaler
 *.model
 
