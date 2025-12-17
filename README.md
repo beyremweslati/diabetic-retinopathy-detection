@@ -17,6 +17,7 @@ Le système entraîne des modèles de classification binaire pour détecter la p
 ## 📊 Dataset
 
 **Source :** Dataset de Détection de Rétinopathie Diabétique (https://www.kaggle.com/datasets/sovitrath/diabetic-retinopathy-224x224-2019-data)
+
 **Total d'images :** 3662 images de rétine en couleur  
 **Classes :** 5 niveaux de sévérité
 
@@ -41,14 +42,13 @@ Le système entraîne des modèles de classification binaire pour détecter la p
 ### 1. Cloner le projet
 
 ```bash
-git clone <url-du-depot>
-cd retinopathie
+git clone https://github.com/beyremweslati/diabetic-retinopathy-detection.git
 ```
 
 ### 2. Construire les Images Docker
 
 ```bash
-docker-compose build
+docker compose build
 ```
 
 Cela construira toutes les images nécessaires :
@@ -61,7 +61,7 @@ Cela construira toutes les images nécessaires :
 ### 3. Démarrer Tous les Services
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 ## Entraînement des Modèles
