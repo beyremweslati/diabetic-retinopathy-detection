@@ -64,3 +64,7 @@ temp/
 # Keep directories but not their contents
 models/.gitkeep
 notebooks/visualizations/.gitkeep
+dataset2/processed/.gitkeep
+dataset2/processed/train/.gitkeep
+dataset2/processed/val/.gitkeep
+dataset2/processed/test/.gitkeep
