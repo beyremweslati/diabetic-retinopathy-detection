@@ -66,7 +66,7 @@ docker compose up -d
 
 ## Entraînement des Modèles
 
-### Option 1 : Utiliser les Notebooks Jupyter
+### Utiliser les Notebooks Jupyter
 
 1. Accéder à Jupyter sur **http://localhost:8888**
 2. Naviguer vers `notebooks/`
@@ -124,7 +124,9 @@ retinopathie/
 │   ├── train.csv               # Labels des images
 │   ├── colored_images/         # Images de rétine (5 classes)
 │   └── processed/              # Caractéristiques traitées (train/val/test)
-│
+│       ├── train/
+│       ├── test/
+│       └── val/
 ├── notebooks/                  # Notebooks Jupyter
 │   ├── data_preparation.ipynb
 │   ├── train_spark_models.ipynb
